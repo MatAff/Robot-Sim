@@ -39,7 +39,8 @@ for(i in 1:500) {
   Move(1)
   
   # Action
-  action <- getActionOuter(dVec, speed)
+  #action <- getActionOuter(dVec, speed)
+  action <- UseMaxDist(dVec, speed)
     dirChange <- action$dirChange
     speed <- action$speed
   
