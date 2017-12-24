@@ -2,7 +2,6 @@
 # Sense line 
 SenseLine <- function(senseLine, draw=FALSE) {
   # Assumed global: spatialLines
-  
   if(draw) { lines(senseLine,type="l") }
   l2 <- Line(senseLine)
   sl2 <- SpatialLines(list(Lines(list(l2),ID="1")))
@@ -66,10 +65,10 @@ PlotSenseLine <- function(dVec) {
 Move <- function(nrSteps) {
   
   # Move
-  dir <- dir + dirChange / nrSteps * speed /10
+  dir <- dir + dirChange / nrSteps * speed / 10 *0.05
   x <- x + sin(dir*pi) * speed / nrSteps / 10
   y <- y + cos(dir*pi) * speed / nrSteps / 10
-
+ 
   # Assign values to global environment
   assign("dir",dir,envir = .GlobalEnv)
   assign("x",x,envir = .GlobalEnv)

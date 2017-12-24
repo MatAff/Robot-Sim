@@ -7,7 +7,7 @@ source("SourceSenseMove.R")
 source("SourceAction.R")
 
 # Generate course, get spatial lines for sensing and draw
-lineList <- GenerateCourse(0.75)
+lineList <- GenerateCourse(0.5)
 spacialLines <- GetSpacialLines(lineList)
 DrawCourse(lineList)
 
@@ -19,7 +19,7 @@ points(x,y)
 
 # Start movement
 dirChange <- 0 # change/meter (2 = full circle)
-speed <- 4 # meter/sec 
+speed <- 50 # meter/sec 
 
 # Sense
 dVec <- SenseAndPlot(20,TRUE); print(dVec)
@@ -34,6 +34,7 @@ for(i in 1:500) {
   
   # Sense
   dVec <- SenseAndPlot(20,TRUE); 
+  #print(dVec)
   
   # Move
   Move(1)
@@ -41,6 +42,7 @@ for(i in 1:500) {
   # Action
   #action <- getActionOuter(dVec, speed)
   action <- UseMaxDist(dVec, speed)
+  action <- UseGaps(dVec, speed)
     dirChange <- action$dirChange
     speed <- action$speed
   
